@@ -143,6 +143,76 @@ class TWPrivateKey extends Opaque {
   late final _TWPrivateKeyGetPublicKeyCurve25519_ptr = lookup<NativeFunction<_c_TWPrivateKeyGetPublicKeyCurve25519>>('TWPrivateKeyGetPublicKeyCurve25519');
   late final _dart_TWPrivateKeyGetPublicKeyCurve25519 _TWPrivateKeyGetPublicKeyCurve25519 =
       _TWPrivateKeyGetPublicKeyCurve25519_ptr.asFunction<_dart_TWPrivateKeyGetPublicKeyCurve25519>();
+
+  /// Computes an EC Diffie-Hellman secret in constant time
+  /// Supported curves: secp256k1
+  Pointer<Void> TWPrivateKeyGetSharedKey(
+      Pointer<TWPrivateKey> pk,
+      Pointer<TWPrivateKey> publicKey,
+      int curve,
+      ) {
+    return _TWPrivateKeyGetSharedKey(
+        pk,
+        publicKey,
+        curve,
+    );
+  }
+
+  late final _TWPrivateKeyGetSharedKey_ptr = lookup<NativeFunction<_c_TWPrivateKeyGetSharedKey>>('TWPrivateKeyGetSharedKey');
+  late final _dart_TWPrivateKeyGetSharedKey _TWPrivateKeyGetSharedKey = _TWPrivateKeyGetSharedKey_ptr.asFunction<_dart_TWPrivateKeyGetSharedKey>();
+
+
+  /// Signs a digest using ECDSA and given curve.
+  Pointer<Void> TWPrivateKeySign(
+      Pointer<TWPrivateKey> pk,
+      Pointer<Void> digest,
+      int curve,
+      ) {
+    return _TWPrivateKeySign(
+      pk,
+      digest,
+      curve,
+    );
+  }
+
+  late final _TWPrivateKeySign_ptr = lookup<NativeFunction<_c_TWPrivateKeySign>>('TWPrivateKeySign');
+  late final _dart_TWPrivateKeySign _TWPrivateKeySign =
+  _TWPrivateKeySign_ptr.asFunction<_dart_TWPrivateKeySign>();
+
+
+  /// Signs a digest using ECDSA and given curve. The result is encoded with DER.
+  Pointer<Void> TWPrivateKeySignAsDER(
+      Pointer<TWPrivateKey> pk,
+      Pointer<Void> digest,
+      int curve,
+      ) {
+    return _TWPrivateKeySignAsDER(
+      pk,
+      digest,
+      curve,
+    );
+  }
+
+  late final _TWPrivateKeySignAsDER_ptr = lookup<NativeFunction<_c_TWPrivateKeySignAsDER>>('TWPrivateKeySignAsDER');
+  late final _dart_TWPrivateKeySign _TWPrivateKeySignAsDER =
+  _TWPrivateKeySignAsDER_ptr.asFunction<_dart_TWPrivateKeySignAsDER>();
+
+  /// Signs a digest using ECDSA and given curve, returns schnoor signature.
+  Pointer<Void> TWPrivateKeySignSchnorr(
+      Pointer<TWPrivateKey> pk,
+      Pointer<Void> message,
+      int curve,
+      ) {
+    return _TWPrivateKeySignSchnorr(
+      pk,
+      message,
+      curve,
+    );
+  }
+
+  late final _TWPrivateKeySignSchnorr_ptr = lookup<NativeFunction<_c_TWPrivateKeySignSchnorr>>('TWPrivateKeySignSchnorr');
+  late final _dart_TWPrivateKeySign _TWPrivateKeySignSchnorr =
+  _TWPrivateKeySignSchnorr_ptr.asFunction<_dart_TWPrivateKeySignSchnorr>();
 }
 
 typedef _c_TWPrivateKeyCreate = Pointer<Int32> Function();
@@ -222,3 +292,53 @@ typedef _c_TWPrivateKeyGetPublicKeyCurve25519 = Pointer<Int32> Function(
 typedef _dart_TWPrivateKeyGetPublicKeyCurve25519 = Pointer<Int32> Function(
   Pointer<TWPrivateKey> pk,
 );
+
+typedef _c_TWPrivateKeyGetSharedKey = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<TWPrivateKey> publicKey,
+    Int32 curve,
+    );
+
+typedef _dart_TWPrivateKeyGetSharedKey = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<TWPrivateKey> publicKey,
+    int curve,
+    );
+
+
+typedef _c_TWPrivateKeySign = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<Void> digest,
+    Int32 curve,
+    );
+
+typedef _dart_TWPrivateKeySign = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<Void> digest,
+    int curve,
+    );
+
+
+typedef _c_TWPrivateKeySignAsDER = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<Void> digest,
+    Int32 curve,
+    );
+
+typedef _dart_TWPrivateKeySignAsDER = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<Void> digest,
+    int curve,
+    );
+
+typedef _c_TWPrivateKeySignSchnorr = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<Void> message,
+    Int32 curve,
+    );
+
+typedef _dart_TWPrivateKeySignSchnorr = Pointer<Void> Function(
+    Pointer<TWPrivateKey> pk,
+    Pointer<Void> message,
+    int curve,
+    );
