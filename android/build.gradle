@@ -40,5 +40,9 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation(name: 'trustwalletcore', ext: 'aar')
+
+    // https://github.com/trustwallet/wallet-core
+    // https://mvnrepository.com/artifact/com.trustwallet/wallet-core
+    // implementation(name: 'trustwalletcore', ext: 'aar')
+    implementation group: 'com.trustwallet', name: 'wallet-core', version: '2.6.3' // use this, has running errors
 }
