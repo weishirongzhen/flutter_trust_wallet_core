@@ -19,10 +19,10 @@ rootProject.allprojects {
         google()
         jcenter()
         maven {
-            url = uri("https://maven.pkg.github.com/weishirongzhen/wallet-core")
+            url = uri("https://maven.pkg.github.com/trustwallet/wallet-core")
             credentials {
-                username = "weishirongzhen"
-                password = "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" // GH token for only allow read package
+                username = System.getenv("GH-USERNAME")
+                password = System.getenv("GH-TOKEN") // create your token -> https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
             }
         }
     }
