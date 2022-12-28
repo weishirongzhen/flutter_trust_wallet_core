@@ -8,18 +8,24 @@ class HDWallet {
   }
 
   HDWallet({int strength = 128, String passphrase = ""}) {
-    _nativehandle = TWHDWalletImpl.create(strength: strength, passphrase: passphrase);
-    if (_nativehandle.hashCode == 0) throw Exception(["HDWallet nativehandle is null"]);
+    _nativehandle =
+        TWHDWalletImpl.create(strength: strength, passphrase: passphrase);
+    if (_nativehandle.hashCode == 0)
+      throw Exception(["HDWallet nativehandle is null"]);
   }
 
   HDWallet.createWithMnemonic(String mnemonic, {String passphrase = ""}) {
-    _nativehandle = TWHDWalletImpl.createWithMnemonic(mnemonic, passphrase: passphrase);
-    if (_nativehandle.hashCode == 0) throw Exception(["HDWallet nativehandle is null"]);
+    _nativehandle =
+        TWHDWalletImpl.createWithMnemonic(mnemonic, passphrase: passphrase);
+    if (_nativehandle.hashCode == 0)
+      throw Exception(["HDWallet nativehandle is null"]);
   }
 
   HDWallet.createWithData(Uint8List bytes, {String passphrase = ""}) {
-    _nativehandle = TWHDWalletImpl.createWithEntropy(bytes, passphrase: passphrase);
-    if (_nativehandle.hashCode == 0) throw Exception(["HDWallet nativehandle is null"]);
+    _nativehandle =
+        TWHDWalletImpl.createWithEntropy(bytes, passphrase: passphrase);
+    if (_nativehandle.hashCode == 0)
+      throw Exception(["HDWallet nativehandle is null"]);
   }
 
   String getAddressForCoin(int coinType) {
@@ -27,7 +33,8 @@ class HDWallet {
   }
 
   PrivateKey getDerivedKey(int coinType, int account, int change, int address) {
-    final pointer = TWHDWalletImpl.getDerivedKey(_nativehandle, coinType, account, change, address);
+    final pointer = TWHDWalletImpl.getDerivedKey(
+        _nativehandle, coinType, account, change, address);
     return PrivateKey._(pointer);
   }
 
@@ -37,11 +44,13 @@ class HDWallet {
   }
 
   PrivateKey getKey(int coinType, String derivationPath) {
-    final pointer = TWHDWalletImpl.getKey(_nativehandle, coinType, derivationPath);
+    final pointer =
+        TWHDWalletImpl.getKey(_nativehandle, coinType, derivationPath);
     return PrivateKey._(pointer);
   }
 
-  PrivateKey getMaterKey(int curve) {
+  /// getMasterKey
+  PrivateKey getMasterKey(int curve) {
     final pointer = TWHDWalletImpl.getMasterKey(_nativehandle, curve);
     return PrivateKey._(pointer);
   }
@@ -59,6 +68,7 @@ class HDWallet {
   }
 
   String getExtendedPublicKey(int purpose, int coinType, int twHdVersion) {
-    return TWHDWalletImpl.getExtendedPublicKey(_nativehandle, purpose, coinType, twHdVersion);
+    return TWHDWalletImpl.getExtendedPublicKey(
+        _nativehandle, purpose, coinType, twHdVersion);
   }
 }

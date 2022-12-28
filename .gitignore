@@ -1,4 +1,5 @@
 .DS_Store
+.history
 .dart_tool/
 
 .packages
